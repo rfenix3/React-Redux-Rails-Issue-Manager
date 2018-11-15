@@ -8,9 +8,9 @@ export default function IssueTable(props) {
       <td>{props.issue.id}</td>
       <td>{props.issue.status}</td>
       <td>{props.issue.owner}</td>
-      <td>{props.issue.created.toDateString()}</td>
+      <td>{props.issue.created}</td>
       <td>{props.issue.effort}</td>
-      <td>{props.issue.completionDate ? props.issue.completionDate.toDateString() : ''}</td>
+      <td>{props.issue.completionDate}</td>
       <td>{props.issue.title}</td>
     </tr>
   );

@@ -9,11 +9,13 @@ export default class IssueAdd extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     var form = document.forms.issueAdd;
+    let dateNow = new Date()
     this.props.createIssue({
       owner: form.owner.value,
       title: form.title.value,
       status: 'New',
-      created: new Date(),
+      //created: new Date(),
+      created: Date(),
     });
     // clear the form for the next input
     form.owner.value = ""; form.title.value = "";
