@@ -7,6 +7,8 @@ import IssueEdit from './components/issueEdit'
 import NavBar from './components/NavBar'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import { connect } from 'react-redux'
+
 // const issues = [
 //   {
 //     id: 1, status: 'Open', owner: 'Ravan',
@@ -24,8 +26,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 class App extends Component {
   constructor() {
     super();
-    this.state = { issues: [] };
-
     this.createIssue = this.createIssue.bind(this);
   }
 
@@ -39,7 +39,9 @@ class App extends Component {
     }).then(response => response.json())
 //      .then(data => {console.log(data)  })
       .then(data => {
-        this.setState({ issues: data})  
+        this.props.dispatch({type: 'LOAD_ISSUES', issues: data})
+        
+//        this.setState({ issues: data})  
       }).catch(err => {
         console.log(err);
       });
@@ -69,7 +71,7 @@ class App extends Component {
           <h1>Issue Tracker</h1>
           < IssueFilter />
           <hr />
-          <IssueTable issues={this.state.issues} />
+          <IssueTable />
           <hr />
           <IssueAdd createIssue={this.createIssue}/>
           
@@ -83,4 +85,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
