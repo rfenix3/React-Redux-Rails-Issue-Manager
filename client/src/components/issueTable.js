@@ -1,19 +1,7 @@
 import React from 'react';
-//import ReactDOM from 'react-dom';
+import IssueRow from './issueRow';
 
 export default function IssueTable(props) {
-
-  const IssueRow = (props) => (
-    <tr>
-      <td>{props.issue.id}</td>
-      <td>{props.issue.status}</td>
-      <td>{props.issue.owner}</td>
-      <td>{props.issue.created}</td>
-      <td>{props.issue.effort}</td>
-      <td>{props.issue.completionDate}</td>
-      <td>{props.issue.title}</td>
-    </tr>
-  );
 
   const issueRows = props.issues.map(issue => <IssueRow key={issue.id} issue={issue} />)
   return (

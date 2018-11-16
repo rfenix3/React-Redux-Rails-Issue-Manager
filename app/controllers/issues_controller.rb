@@ -6,7 +6,8 @@ class IssuesController < ApplicationController
     if params[:user_id]
       @issues = User.find(params[:user_id]).issues.order_by_latest    
     else
-      @issues = Issue.all.order_by_latest
+      # @issues = Issue.all.order_by_latest
+      @issues = Issue.all
       render json: @issues, status: 200 
     end
   end 
@@ -19,6 +20,7 @@ class IssuesController < ApplicationController
 
   def show
     @issue = Issue.find(params[:id])
+    render json: @issue, status: 200 
   end
     
   def new
