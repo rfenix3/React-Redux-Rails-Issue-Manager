@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
+import Home from './components/home'
+import About from './components/about'
 import IssueFilter from './components/issueFilter'
 import IssueTable from './components/issueTable'
 import IssueAdd from './components/issueAdd'
 import IssueEdit from './components/issueEdit'
 import NavBar from './components/NavBar'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Redirect, Route, withRouter } from 'react-router';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import { connect } from 'react-redux'
 
@@ -68,17 +71,15 @@ class App extends Component {
       <Router>
         <div>
           <NavBar />
-          <h1>Issue Tracker</h1>
+          <h1>React-Redux-Rails Issue Manager</h1>
           < IssueFilter />
           <hr />
-          <IssueTable />
-          <hr />
           <IssueAdd createIssue={this.createIssue}/>
-          
-          <Route exact path="/" render={() => <div>Home</div>} />
-          <Route exact path="/issues" render={() => <div>Issues</div>} />
+          <hr />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/issues" component={IssueTable} />
           <Route path="/issues/:id" component={IssueEdit} />
-          <Route path='/about' render={() => <div>About</div>} />
+          <Route path='/about' component={About} />
         </div>
       </Router>
     );
