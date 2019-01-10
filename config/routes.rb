@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   scope '/api' do
     get :issues, to: 'issues#index'
+    post :issues, to: 'issues#create'
   end
 
   resources :issues

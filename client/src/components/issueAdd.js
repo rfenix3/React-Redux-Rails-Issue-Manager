@@ -5,17 +5,20 @@ class IssueAdd extends React.Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
 
-  state = {
-    owner: '',
-    title: ''
+    this.state = {
+      owner: '',
+      title: ''
+    };
   }
 
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.dispatch({type: 'ADD_ISSUE', issue: this.state})
+    //this.props.dispatch({type: 'ADD_ISSUE', issue: this.state})
+    console.log(this.props);
+    const { createIssue, dispatch } = this.props
+    createIssue(this.state, dispatch)
 
 
     // var form = document.forms.issueAdd;

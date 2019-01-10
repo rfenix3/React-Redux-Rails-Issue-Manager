@@ -11,9 +11,7 @@ export default function manageIssuesReducer(
       console.log('adding ', action.issue )
       const newIssue = action.issue;
       newIssue.id = state.issues.length + 1;
-      newIssue.status = 'New';
-      newIssue.created = Date();
-      debugger;
+      //debugger;
       return {
         ...state, 
         issues: [...state.issues, newIssue]

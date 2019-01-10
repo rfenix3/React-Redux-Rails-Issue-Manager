@@ -32,9 +32,11 @@ class IssuesController < ApplicationController
     #byebug
     @issue = Issue.new(issue_params)
     if @issue.save
-      redirect_to issues_path
+      # redirect_to issues_path
+      render json: @issue, status: 200 
     else
-      render :new
+      # render :new
+      render json: {message: 'Did not save...'}, status: 400 
     end
   end
 
@@ -86,9 +88,20 @@ class IssuesController < ApplicationController
       :created,
       :effort,
       :completion_date,
-      :employee_id,
-      :user_id
       )
     end
+
+    # def issue_params
+    #   params.require(:issue).permit(
+    #   :title,
+    #   :status,
+    #   :owner,
+    #   :created,
+    #   :effort,
+    #   :completion_date,
+    #   :employee_id,
+    #   :user_id
+    #   )
+    # end
 
 end

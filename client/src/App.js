@@ -50,21 +50,25 @@ class App extends Component {
       });
   }
   
-  createIssue(newIssue) {
-    const newIssues = this.state.issues.slice();
-    newIssue.id = this.state.issues.length + 1;
-    newIssues.push(newIssue);
-    this.setState({ issues: newIssues });
-    // fetch('/api/issues', {
-    //   method: 'POST',
-    //   headers: {'Content-Type':'application/json'},
-    //   body: JSON.stringify(newIssue),
-    // }).then(response =>
-    //   console.log(response.json()))
-    // .catch(err => {
-    //   alert("Error in sending data to server: " + err.message);
-    // });
+  createIssue(newIssue, dispatch) {
+    //id's are automatically created;
+    newIssue.status = 'New';
+    newIssue.created = Date();
+    console.log(newIssue);
+    console.log(dispatch);
+
+    fetch('/api/issues/', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({issue: newIssue}),
+      })
+      .then(res => res.json())
+      .then(response => console.log('Success:', JSON.stringify(response)))
+      .then(dispatch({type: 'ADD_ISSUE', issue: newIssue}))
+      .catch(error => console.error('Error:', error));
+      // debugger;
   }
+
 
   render() {
     return (
