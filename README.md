@@ -7,7 +7,7 @@ This is a React application that manages issues records through tables and forms
 The service desk is the single point of contact for customers to report IT-related incidents. As such, this application aims to help service desk support staffs to capture and track IT issues promptly, work collaboratively, encourage knowledge transfer, collect IT data trend, and support problem management requirements.
 
 ## Home Page
-Home Page screen shot here...
+![alt text](https://drive.google.com/open?id=1VtQkA19buslhTcbGIHOCW6o5S3xKzeaZ "Home Page screen shot")
 
 ## Characteristics of the Application
 1. Uses the React front-end.
@@ -71,7 +71,7 @@ $ rake start
 ```
 10. This should open the application in a web browser. If not, open a web browser and type in the localhost on url window
 ```
-http://localhost:3001
+http://localhost:3000
 ```
 
 ## Tip:
