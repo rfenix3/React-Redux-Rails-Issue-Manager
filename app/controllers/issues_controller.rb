@@ -90,6 +90,7 @@ class IssuesController < ApplicationController
       :created,
       :effort,
       :completion_date,
+      :votes,
       )
     end
 

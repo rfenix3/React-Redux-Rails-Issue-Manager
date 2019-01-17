@@ -9,7 +9,6 @@ import IssueEdit from './components/issueEdit'
 import NavBar from './components/NavBar'
 import { Redirect, Route, withRouter } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
-
 import { connect } from 'react-redux'
 
 
@@ -27,11 +26,8 @@ class App extends Component {
     fetch('/api/issues', {
       accept: 'application/json',
     }).then(response => response.json())
-//      .then(data => {console.log(data)  })
       .then(data => {
         this.props.dispatch({type: 'LOAD_ISSUES', issues: data})
-        
-//        this.setState({ issues: data})  
       }).catch(err => {
         console.log(err);
       });
