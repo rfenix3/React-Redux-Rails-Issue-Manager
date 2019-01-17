@@ -48,9 +48,11 @@ class IssuesController < ApplicationController
     #byebug
     @issue = Issue.find(params[:id])
     if @issue.update(issue_params)
-      redirect_to issues_path(current_user), notice: 'Issue was successfully updated.'
+      # redirect_to issues_path(current_user), notice: 'Issue was successfully updated.'
+      render json: @issue, status: 200 
     else
-      render :edit
+      # render :edit
+      render json: {message: 'Did not update...'}, status: 400 
     end
   end
  

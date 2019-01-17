@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import IssueRow from './issueRow';
 import { connect } from 'react-redux'
 
-class IssueTable extends React.Component {
+class IssueTable extends Component {
 
   render() {
-    const issueRows = this.props.issues.map(issue => <IssueRow key={issue.id} issue={issue} />)
+    const issueRows = this.props.issues.map(issue => <IssueRow key={issue.id} issue={issue}/>)
 
     return (
       <table className="bordered-table">
@@ -18,6 +18,7 @@ class IssueTable extends React.Component {
             <th>Effort</th>
             <th>Completion Date</th>
             <th>Title</th>
+            <th>Votes</th>
           </tr>
         </thead>
         <tbody>{issueRows}</tbody>

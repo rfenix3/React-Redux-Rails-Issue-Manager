@@ -12,19 +12,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import { connect } from 'react-redux'
 
-// const issues = [
-//   {
-//     id: 1, status: 'Open', owner: 'Ravan',
-//     created: new Date('2016-08-15'), effort: 5, completionDate: undefined,
-//     title: 'Error in console when clicking Add',
-//   },
-//   {
-//     id: 2, status: 'Assigned', owner: 'Eddie',
-//     created: new Date('2016-08-16'), effort: 14, completionDate: new Date('2016-08-30'),
-//     title: 'Missing bottom border on panel',
-//   },
-// ];
-
 
 class App extends Component {
   constructor() {
@@ -54,8 +41,9 @@ class App extends Component {
     //id's are automatically created;
     newIssue.status = 'New';
     newIssue.created = Date();
-    console.log(newIssue);
-    console.log(dispatch);
+    //console.log(newIssue);
+    //console.log(dispatch);
+    console.log('C')
 
     fetch('/api/issues/', {
       method: 'POST',
@@ -63,8 +51,10 @@ class App extends Component {
       body: JSON.stringify({issue: newIssue}),
       })
       .then(res => res.json())
-      .then(response => console.log('Success:', JSON.stringify(response)))
-      .then(dispatch({type: 'ADD_ISSUE', issue: newIssue}))
+      //.then(response => console.log('Success:', JSON.stringify(response)))
+      .then(res => {
+        dispatch({type: 'ADD_ISSUE', issue: res})
+      })
       .catch(error => console.error('Error:', error));
       // debugger;
   }

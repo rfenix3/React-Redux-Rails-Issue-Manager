@@ -16,21 +16,9 @@ class IssueAdd extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     //this.props.dispatch({type: 'ADD_ISSUE', issue: this.state})
-    console.log(this.props);
+    //console.log(this.props);
     const { createIssue, dispatch } = this.props
     createIssue(this.state, dispatch)
-
-
-    // var form = document.forms.issueAdd;
-    // this.props.createIssue({
-    //   owner: form.owner.value,
-    //   title: form.title.value,
-    //   status: 'New',
-    //   //created: new Date(),
-    //   created: Date(),
-    // });
-    // // clear the form for the next input
-    // form.owner.value = ""; form.title.value = "";
   }
 
   handleInputChange = (event) => {
