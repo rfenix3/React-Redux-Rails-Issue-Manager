@@ -3,6 +3,21 @@ import IssueRow from './issueRow';
 import { connect } from 'react-redux'
 
 class IssueTable extends Component {
+  constructor() {
+    super();
+    this.sortByVotes = this.sortByVotes.bind(this);
+  }
+
+  sortByVotes = (e) => {
+      e.preventDefault();
+      const issues = this.props.issues
+      const sorted = issues.sort((b,a)=> (a.votes-b.votes))
+      console.log('sorted reached', sorted)
+      this.setState((state) => {
+        return {issues: sorted};
+      })
+  }
+
 
   render() {
     const issueRows = this.props.issues.map(issue => <IssueRow key={issue.id} issue={issue}/>)
@@ -18,7 +33,7 @@ class IssueTable extends Component {
             <th>Effort</th>
             <th>Completion Date</th>
             <th>Title</th>
-            <th>Votes</th>
+            <th><a href="x" onClick={this.sortByVotes} issues={issueRows}>Votes</a></th>
           </tr>
         </thead>
         <tbody>{issueRows}</tbody>
