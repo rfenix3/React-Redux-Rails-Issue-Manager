@@ -11,12 +11,7 @@ import { Redirect, Route, withRouter } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux'
 
-
 class App extends Component {
-  constructor() {
-    super();
-    this.createIssue = this.createIssue.bind(this);
-  }
 
   componentDidMount() {
     this.loadData();
@@ -33,29 +28,6 @@ class App extends Component {
       });
   }
   
-  createIssue(newIssue, dispatch) {
-    //id's are automatically created;
-    newIssue.status = 'New';
-    newIssue.created = Date();
-    //console.log(newIssue);
-    //console.log(dispatch);
-    console.log('C')
-
-    fetch('/api/issues/', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({issue: newIssue}),
-      })
-      .then(res => res.json())
-      //.then(response => console.log('Success:', JSON.stringify(response)))
-      .then(res => {
-        dispatch({type: 'ADD_ISSUE', issue: res})
-      })
-      .catch(error => console.error('Error:', error));
-      // debugger;
-  }
-
-
   render() {
     return (
       <Router>
@@ -64,7 +36,7 @@ class App extends Component {
           <h1>React-Redux-Rails Issue Manager</h1>
           < IssueFilter />
           <hr />
-          <IssueAdd createIssue={this.createIssue}/>
+          <IssueAdd />
           <hr />
           <Route exact path="/" component={Home} />
           <Route exact path="/issues" component={IssueTable} />

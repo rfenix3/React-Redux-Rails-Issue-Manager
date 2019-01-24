@@ -12,20 +12,9 @@ export default function manageIssuesReducer(
       return {
           issues: [...state.issues, action.issue]
       }
-    case 'INCREASE_VOTE':
-      // console.log('increasing vote... not persisting...', action.issue )
-      const updatedIssues = state.issues.map((issue) => {
-        if (issue.id === action.issue.id) {
-          action.issue.votes += 1;
-          return action.issue
-        } else {
-          return issue
-        }
-      });
-      return {...state, issues: updatedIssues, };
 
-      case 'ADD_VOTE':
-      // console.log('adding 1 to vote... persisting. Updated thru action creator.', action.issue)
+    case 'INCREASE_VOTE':
+      console.log('adding 1 to vote... persisting. Updated thru action creator.', action.issue)
       const updatedIssuesVote = state.issues.map((issue) => {
         if (issue.id === action.issue.id) {
           return action.issue

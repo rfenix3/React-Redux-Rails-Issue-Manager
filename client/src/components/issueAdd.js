@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { createIssue } from '../actions';
 
 class IssueAdd extends React.Component {
   constructor() {
@@ -15,10 +16,7 @@ class IssueAdd extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    //this.props.dispatch({type: 'ADD_ISSUE', issue: this.state})
-    //console.log(this.props);
-    const { createIssue, dispatch } = this.props
-    createIssue(this.state, dispatch)
+    this.props.createIssue(this.state)
   }
 
   handleInputChange = (event) => {
@@ -42,4 +40,10 @@ class IssueAdd extends React.Component {
   }
 }
 
-export default connect()(IssueAdd);
+const mapStateToProps = (state) => {
+  return {
+    issues: state.issues
+  }
+ }
+
+export default connect(mapStateToProps,{createIssue})(IssueAdd);

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { addVote } from '../actions';
+import { increaseVote } from '../actions';
+import VoteButton from './voteButton';
 
 
 class IssueRow extends React.Component {
@@ -12,12 +13,12 @@ class IssueRow extends React.Component {
   }
 
   handleClick = () => {
-//    this.props.increaseVote(this.props.issue)
-    this.props.addVote(this.props.issue)
+    this.props.increaseVote(this.props.issue)
   }
 
     render() {
-      const {key, issue} = this.props
+      const {issue} = this.props
+      
       return(
         <tr>
           <td><Link to={`/issues/${issue.id}`}>{issue.id}</Link></td>
@@ -27,23 +28,11 @@ class IssueRow extends React.Component {
           <td>{issue.effort}</td>
           <td>{issue.completionDate}</td>
           <td>{issue.title}</td>
-          <td><button issue={this.props.issue} onClick={this.handleClick}>{issue.votes}</button></td>
+          <td><VoteButton handleClick={this.handleClick} votes={issue.votes}/></td>
         </tr>
       )  
     }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    issues: state.issues
-  }
- }
 
-//  const mapDispatchToProps = dispatch => {
-//    return {
-//      increaseVote: (issue) => dispatch({type: 'INCREASE_VOTE', issue: issue })
-//    };
-//  }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(IssueRow);
-export default connect(mapStateToProps, {addVote})(IssueRow);
+export default connect(null, {increaseVote})(IssueRow);

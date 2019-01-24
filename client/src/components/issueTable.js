@@ -18,7 +18,6 @@ class IssueTable extends Component {
       })
   }
 
-
   render() {
     const issueRows = this.props.issues.map(issue => <IssueRow key={issue.id} issue={issue}/>)
 
@@ -33,7 +32,7 @@ class IssueTable extends Component {
             <th>Effort</th>
             <th>Completion Date</th>
             <th>Title</th>
-            <th><a href="x" onClick={this.sortByVotes} issues={issueRows}>Votes</a></th>
+            <th><a href="#" onClick={this.sortByVotes} issues={issueRows}>Votes</a></th>
           </tr>
         </thead>
         <tbody>{issueRows}</tbody>
@@ -43,7 +42,6 @@ class IssueTable extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state.issues)
   return { issues: state.issues };
 };
 
