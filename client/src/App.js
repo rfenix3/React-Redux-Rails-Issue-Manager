@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import Home from './components/home'
 import About from './components/about'
-import IssueFilter from './components/issueFilter'
+//import IssueFilter from './components/issueFilter'
 import IssueTable from './components/issueTable'
-import IssueAdd from './components/issueAdd'
 import IssueEdit from './components/issueEdit'
 import NavBar from './components/NavBar'
 import { Redirect, Route, withRouter } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux'
+import logo from  './images/rf_company.png'
 
 class App extends Component {
 
@@ -32,11 +32,13 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <h1 class="header">
+            <span>
+              <img src={logo} alt="logo" width="200" height="160"/>
+            </span>
+            React-Redux-Rails Issue Manager
+          </h1>
           <NavBar />
-          <h1>React-Redux-Rails Issue Manager</h1>
-          < IssueFilter />
-          <hr />
-          <IssueAdd />
           <hr />
           <Route exact path="/" component={Home} />
           <Route exact path="/issues" component={IssueTable} />

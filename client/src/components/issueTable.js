@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import IssueRow from './issueRow';
 import { connect } from 'react-redux'
+import IssueAdd from './issueAdd'
 
 class IssueTable extends Component {
   constructor() {
@@ -22,21 +23,26 @@ class IssueTable extends Component {
     const issueRows = this.props.issues.map(issue => <IssueRow key={issue.id} issue={issue}/>)
 
     return (
-      <table className="bordered-table">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Status</th>
-            <th>Owner</th>
-            <th>Created</th>
-            <th>Effort</th>
-            <th>Completion Date</th>
-            <th>Title</th>
-            <th><a href="#" onClick={this.sortByVotes} issues={issueRows}>Votes</a></th>
-          </tr>
-        </thead>
-        <tbody>{issueRows}</tbody>
-      </table>
+      <div>
+        <IssueAdd />
+        <hr />
+        
+        <table className="bordered-table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Status</th>
+              <th>Owner</th>
+              <th>Created</th>
+              <th>Effort</th>
+              <th>Completion Date</th>
+              <th>Title</th>
+              <th><a href="#" onClick={this.sortByVotes} issues={issueRows}>Votes</a></th>
+            </tr>
+          </thead>
+          <tbody>{issueRows}</tbody>
+        </table>
+      </div>
     );
   }
 }

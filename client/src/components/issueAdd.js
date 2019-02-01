@@ -5,12 +5,12 @@ import { createIssue } from '../actions';
 class IssueAdd extends React.Component {
   constructor() {
     super();
-    this.handleSubmit = this.handleSubmit.bind(this);
-
     this.state = {
       owner: '',
       title: ''
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
 

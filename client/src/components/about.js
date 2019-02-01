@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Home() {
   return(
-    <div class="App">
+    <div class="App form-style">
       <h2>About</h2>
       <p>Author: Richard Fenix</p>
       <p>Location: Atlanta, GA</p>
