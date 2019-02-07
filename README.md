@@ -1,5 +1,5 @@
 # React Redux Rails Issue Manager
-A React Create and Read application for managing issues.
+A React application with Create, Read, Update, and Sort features for managing issues.
 
 ## Description and Purpose
 This is a React application that manages issues records through tables and forms. The goal of the application is to build an Issue Management System to support one of ITIL Incident Management's main function: The Service Desk. 
@@ -9,13 +9,15 @@ The service desk is the single point of contact for customers to report IT-relat
 ## Issue Table Page
 ![alt text](https://github.com/rfenix3/React-Redux-Rails-Issue-Manager/blob/master/app/assets/images/React_issue_table_screenshot.png?raw=true "Issue Table Page screen shot")
 
+[Issue Table Screen Shot](https://drive.google.com/file/d/1ZWKuPTdhmA_zXLVnI7OWmGHOZSCcZ031/view?usp=sharing)
+
 ## Characteristics of the Application
 1. Uses the React front-end.
 2. Uses Redux to manage states through store.
 3. Uses Rails backend server and sqlite3 database to persist data.
 
-## Table Schema
- Table schema here...
+## Application Demo
+[Demo Video Link](https://drive.google.com/file/d/1aV7mLNqF093UsDCRKihIVu1AbpNlr6qz/view?usp=sharing)
 
 ## Application Features
 1. Displays sqlite database table records.
