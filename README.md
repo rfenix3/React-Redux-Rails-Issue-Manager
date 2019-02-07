@@ -21,7 +21,12 @@ The service desk is the single point of contact for customers to report IT-relat
 
 ## Application Features
 1. Displays sqlite database table records.
-2. Ability to create new table records.
+2. Create new records.
+3. Update records.
+4. Field validation.
+5. Error messages.
+6. Sort table records.
+
 
 ## Technology Used
 * React
@@ -33,6 +38,7 @@ The service desk is the single point of contact for customers to report IT-relat
 
 ## Pre-requisite
 * Integrated Development Environment (IDE) or Amazon Web Services (AWS) Cloud9
+* GitHub account to access the codes at [React-Redux-Rails-Issue-Manager](https://github.com/rfenix3/React-Redux-Rails-Issue-Manager.git).
 
 ## Get Started
 1. Clone repository
