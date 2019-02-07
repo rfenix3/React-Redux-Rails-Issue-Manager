@@ -7,7 +7,7 @@ This is a React application that manages issues records through tables and forms
 The service desk is the single point of contact for customers to report IT-related incidents. As such, this application aims to help service desk support staffs to capture and track IT issues promptly, work collaboratively, encourage knowledge transfer, collect IT data trend, and support problem management requirements.
 
 ## Issue Table Page
-![Issue Table screen shot](https://github.com/rfenix3/React-Redux-Rails-Issue-Manager/blob/master/app/assets/images/RFenix_React_Redux.png)
+![Issue Table screen shot](https://github.com/rfenix3/React-Redux-Rails-Issue-Manager/app/assets/images/RFenix_React_Redux.png)      
 
 [Issue Table Screen Shot](https://drive.google.com/file/d/1ZWKuPTdhmA_zXLVnI7OWmGHOZSCcZ031/view?usp=sharing)
 
