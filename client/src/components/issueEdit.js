@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 import NumInput from './NumInput';
 import DateInput from './DateInput.js';
 
-export default class IssueEdit extends React.Component {
+import { connect } from 'react-redux'
+import { updateIssue } from '../actions';
+
+
+class IssueEdit extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -20,7 +24,8 @@ export default class IssueEdit extends React.Component {
       invalidFields: {},
     };
     this.onChange = this.onChange.bind( this); 
-    this.onValidityChange = this.onValidityChange.bind(this);   
+    this.onValidityChange = this.onValidityChange.bind(this); 
+    this.handleEditSubmit = this.handleEditSubmit.bind(this);  
   }
 
   componentDidMount () {
@@ -38,9 +43,7 @@ export default class IssueEdit extends React.Component {
     const issue = Object.assign({}, this.state.issue);
     const value = (convertedValue !== undefined) ? convertedValue : event.target.value;
     issue[event.target.name] = value;
-    //console.log(event.target.name);
-    //console.log(value);
-    this.setState({ issue:issue });
+    this.setState({ issue: issue });
   }
 
   onValidityChange(event, valid) {
@@ -60,25 +63,31 @@ export default class IssueEdit extends React.Component {
       accept: 'application/json',
     }).then(response => response.json()
     ).then((issue) => {
-        issue.created = new Date(issue.created).toDateString();
+        issue.created = new Date(issue.created);
         issue.completionDate = issue.completionDate != null ?
         new Date(issue.completionDate) : null;
-        this.setState({ issue }, console.log(issue))
+        this.setState({ issue }) //console.log(issue))
     }).catch(err => {
         console.log(err);
     });
   }
   
+  handleEditSubmit(e) {
+    e.preventDefault();
+    // console.log('handleEditSubmit ', this.state.issue)
+    this.props.updateIssue(this.state.issue);
+  }
+
   render() {
     const issue = this.state.issue;
     const validationMessage = Object.keys(this.state.invalidFields).length === 0 ? null
     : (<div className="error">Please correct invalid fields before submitting.</div>);
     return (
       <div>
-        <form class="form-style">
+        <form className="form-style" name="issueEdit" onSubmit={this.handleEditSubmit}>
           ID: {issue.id}
           < br />
-          Created: {issue.created}
+          Created: {issue.created ? issue.created.toISOString().substr(0,10) : ''}
           < br />
           Status: 
             < select name ="status" value ={issue.status} onChange ={ this.onChange} > 
@@ -92,14 +101,14 @@ export default class IssueEdit extends React.Component {
             < br />
             Owner: < input name ="owner" value ={issue.owner} onChange ={ this.onChange} />
             < br />
-            Effort: < NumInput size ={5} name ="effort" value ={issue.effort} onChange ={ this.onChange} />
+            Effort (Hrs): < NumInput size ={5} name ="effort" value ={issue.effort} onChange ={this.onChange} />
             < br />
             Completion Date: <DateInput
               name="completionDate" value={issue.completionDate} onChange={this.onChange}
               onValidityChange={this.onValidityChange}
             />
             < br />
-            Title: < input name ="title" size ={ 50} value ={issue.title} onChange ={ this.onChange} />
+            Title: < input name ="title" size ={50} value ={issue.title} onChange ={this.onChange} />
             < br />
             {validationMessage}
             < button type ="submit" > Submit </ button >                     
@@ -110,9 +119,9 @@ export default class IssueEdit extends React.Component {
   } 
 }
 
-
 IssueEdit.propTypes = {
-  params: PropTypes.object.isRequired,
+  params: PropTypes.object,
 };
 
+export default connect(null,{updateIssue})(IssueEdit);
 

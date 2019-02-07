@@ -32,7 +32,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <h1 class="header">
+          <h1 className="header">
             <span>
               <img src={logo} alt="logo" width="200" height="160"/>
             </span>

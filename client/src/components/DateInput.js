@@ -37,11 +37,12 @@ export default class DateInput extends React.Component {
   }
 
   displayFormat(date) {
-    return (date != null) ? date.toDateString() : '';
+    return (date != null) ? date.toISOString().substr(0, 10) : '';
   }
 
   editFormat(date) {
     return (date != null) ? date.toISOString().substr(0, 10) : '';
+    // return (date != null) ? date.toLocaleString() : '';
   }
 
   unformat(str) {

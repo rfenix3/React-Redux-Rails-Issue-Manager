@@ -13,7 +13,6 @@ class IssueAdd extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
   handleSubmit(e) {
     e.preventDefault();
     this.props.createIssue(this.state)
@@ -40,10 +39,11 @@ class IssueAdd extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    issues: state.issues
-  }
- }
+// const mapStateToProps = (state) => {
+//   return {
+//     issues: state.issues
+//   }
+//  }
 
-export default connect(mapStateToProps,{createIssue})(IssueAdd);
+//export default connect(mapStateToProps,{createIssue})(IssueAdd);
+export default connect(null,{createIssue})(IssueAdd);

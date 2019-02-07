@@ -24,8 +24,8 @@ export const increaseVote = (issue) => {
   console.log('running addVote action creator...')
   const updatedVotes = {...issue}
   updatedVotes.votes = updatedVotes.votes + 1
-  console.log('issue: ', issue)
-  console.log('updatedVote: ', updatedVotes)
+  // console.log('issue: ', issue)
+  // console.log('updatedVote: ', updatedVotes)
   return dispatch => {
     return fetch(`/api/issues/${issue.id}`, {
       method: "PUT",
@@ -40,5 +40,25 @@ export const increaseVote = (issue) => {
     .catch(error => console.log('Error:', error));
   }
 }
+
+export const updateIssue = (issue) => {
+  // console.log('running updateIssue action creator...')
+  const updatedIssue = {...issue};
+  // console.log('updatedIssue: ', updatedIssue)
+  return dispatch => {
+    // Use back-ticks (`) when inserting javascript variables in fetch string.
+    return fetch(`/api/issues/${issue.id}`, {
+      method: 'PUT',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({issue: updatedIssue}),
+      })
+      .then(res => res.json())
+      .then(issue => {
+        dispatch({type: 'UPDATE_ISSUE', issue: issue})
+      })
+    .catch(error => console.error('Error:', error));
+  }
+}
+
 
 

@@ -24,9 +24,9 @@ class IssueRow extends React.Component {
           <td><Link to={`/issues/${issue.id}`}>{issue.id}</Link></td>
           <td>{issue.status}</td>
           <td>{issue.owner}</td>
-          <td>{new Date(issue.created).toDateString()}</td>
+          <td>{new Date(issue.created).toISOString().substr(0,10)}</td>
           <td>{issue.effort}</td>
-          <td>{issue.completionDate != null ? new Date(issue.completionDate).toDateString() : ''}</td>
+          <td>{issue.completionDate != null ? new Date(issue.completionDate).toISOString().substr(0,10) : ''}</td>
           <td>{issue.title}</td>
           <td><VoteButton handleClick={this.handleClick} votes={issue.votes}/></td>
         </tr>

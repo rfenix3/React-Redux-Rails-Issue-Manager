@@ -89,7 +89,7 @@ class IssuesController < ApplicationController
       :owner,
       :created,
       :effort,
-      :completion_date,
+      :completionDate,
       :votes,
       )
     end

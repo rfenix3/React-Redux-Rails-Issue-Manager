@@ -13,7 +13,7 @@ class IssueTable extends Component {
       e.preventDefault();
       const issues = this.props.issues
       const sorted = issues.sort((b,a)=> (a.votes-b.votes))
-      console.log('sorted reached', sorted)
+      // console.log('sorted reached', sorted)
       this.setState((state) => {
         return {issues: sorted};
       })
